@@ -13,6 +13,12 @@ const modelCreate = async (task) => {
   };
 };
 
+const modelRead = async () => {
+  const [result] = await connection.execute('SELECT * FROM Ebytr.task');
+  return result;
+};
+
 module.exports = {
   modelCreate,
+  modelRead,
 };
