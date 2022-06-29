@@ -18,7 +18,21 @@ const modelRead = async () => {
   return result;
 };
 
+const modelUpdate = async (id, body) => {
+  const { task, status } = body;
+  const query = `UPDATE Ebytr.task SET task = ?, status = ?
+                 WHERE id = ?`;
+  await connection.execute(query, [task, status, id]);
+
+  return {
+    id,
+    task,
+    status,
+  };
+};
+
 module.exports = {
   modelCreate,
   modelRead,
+  modelUpdate,
 };
