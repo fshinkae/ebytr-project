@@ -20,7 +20,6 @@ const update = async (req, res) => {
 
 // delet function turn to remove
 const remove = async (req, res) => {
-  console.log(req);
   const { id } = req.params;
   await serviceTask.serviceDelete(id);
   res.status(204).send();
