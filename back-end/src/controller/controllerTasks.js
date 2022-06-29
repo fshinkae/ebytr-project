@@ -18,8 +18,16 @@ const update = async (req, res) => {
   res.status(200).json(updateTask);
 };
 
+// delet function turn to remove
+const remove = async (req, res) => {
+  const { id } = req.params;
+  await serviceTask.serviceDelete(id);
+  res.status(204).send();
+};
+
 module.exports = {
   create,
   read,
   update,
+  remove,
 };
