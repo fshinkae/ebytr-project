@@ -10,7 +10,13 @@ const serviceRead = async () => {
   return allTasks;
 };
 
+const serviceUpdate = async (id, body) => {
+  const updateTask = await modelTask.modelUpdate(id, body);
+  return updateTask;
+};
+
 module.exports = {
   serviceCreate,
   serviceRead,
+  serviceUpdate,
 };
