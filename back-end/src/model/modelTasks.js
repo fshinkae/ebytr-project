@@ -31,8 +31,13 @@ const modelUpdate = async (id, body) => {
   };
 };
 
+const modelDelete = async (id) => {
+  await connection.execute('DELETE from Ebytr.task WHERE id = ?', [id]);
+};
+
 module.exports = {
   modelCreate,
   modelRead,
   modelUpdate,
+  modelDelete,
 };

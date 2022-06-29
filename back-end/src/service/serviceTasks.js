@@ -15,8 +15,11 @@ const serviceUpdate = async (id, body) => {
   return updateTask;
 };
 
+const serviceDelete = async (id) => modelTask.modelDelete(id);
+
 module.exports = {
   serviceCreate,
   serviceRead,
   serviceUpdate,
+  serviceDelete,
 };
