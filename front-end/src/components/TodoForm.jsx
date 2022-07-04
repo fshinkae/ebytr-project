@@ -4,17 +4,19 @@ import Service from '../service/Service';
 
 export default function TodoForm() {
   const {
-    task, setTask,
+    task, setTask, refresh, setRefresh,
   } = useContext(Context);
 
   const handleChange = ({ target }) => {
     setTask(
       target.value,
     );
+    if (refresh === false) setRefresh(true);
   };
 
   const onClick = () => {
     Service.createTask(task);
+    if (refresh === false) setRefresh(true);
   };
 
   return (

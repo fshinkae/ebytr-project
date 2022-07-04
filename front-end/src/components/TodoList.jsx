@@ -3,7 +3,7 @@ import Context from '../context/Context';
 import Service from '../service/Service';
 
 export default function TodoList() {
-  const { list } = useContext(Context);
+  const { list, refresh, setRefresh } = useContext(Context);
   const [edit, setEdit] = useState({
     isEditing: false,
     idEdit: 0,
@@ -13,10 +13,12 @@ export default function TodoList() {
 
   const deleteTask = async (task) => {
     await Service.deleteTask(task);
+    if (refresh === false) setRefresh(true);
   };
 
   const updateStatus = async (id, task, status) => {
     await Service.editTask(id, task, status);
+    if (refresh === false) setRefresh(true);
   };
 
   const editorChange = async (id, status) => {
@@ -34,11 +36,12 @@ export default function TodoList() {
     setEdit({
       isEditing: false,
     });
+    if (refresh === false) setRefresh(true);
   };
 
   useEffect(() => {
-
-  }, [list]);
+    setRefresh(false);
+  }, [refresh]);
 
   return (
     <ul>

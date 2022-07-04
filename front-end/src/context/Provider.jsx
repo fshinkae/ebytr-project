@@ -6,6 +6,7 @@ import Service from '../service/Service';
 export default function Provider({ children }) {
   const [task, setTask] = useState('');
   const [list, setList] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   async function fetchList() {
     const array = await Service.readAllTask();
@@ -14,14 +15,16 @@ export default function Provider({ children }) {
 
   useEffect(() => {
     fetchList();
-  }, []);
+  }, [refresh]);
 
   const stateGlobal = useMemo(() => ({
     task,
     setTask,
     list,
     setList,
-  }), [task, list]);
+    refresh,
+    setRefresh,
+  }), [task, list, refresh]);
 
   return (
     <Context.Provider value={stateGlobal}>
