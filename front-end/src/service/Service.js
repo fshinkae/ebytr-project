@@ -33,7 +33,6 @@ const deleteTask = async (id) => {
 };
 
 const editTask = async (id, task, status) => {
-  console.log('Entrando', task, status);
   try {
     const result = await axios.put(`${URL}tasks/${id}`, {
       task,
