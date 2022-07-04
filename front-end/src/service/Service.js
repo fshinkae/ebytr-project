@@ -4,7 +4,7 @@ const URL = 'http://localhost:3000/';
 
 const createTask = async (task, status) => {
   try {
-    const result = await axios.post(`${URL}/tasks`, {
+    const result = await axios.post(`${URL}tasks`, {
       task,
       status,
     });
