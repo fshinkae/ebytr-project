@@ -14,12 +14,13 @@ export default function Provider({ children }) {
 
   useEffect(() => {
     fetchList();
-  }, []);
+  }, [list]);
 
   const stateGlobal = useMemo(() => ({
     task,
     setTask,
     list,
+    setList,
   }), [task, list]);
 
   return (

@@ -3,7 +3,9 @@ import Context from '../context/Context';
 import Service from '../service/Service';
 
 export default function TodoForm() {
-  const { task, setTask } = useContext(Context);
+  const {
+    task, setTask,
+  } = useContext(Context);
 
   const handleChange = ({ target }) => {
     setTask(

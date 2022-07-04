@@ -16,11 +16,20 @@ const createTask = async (task, status) => {
 
 const readAllTask = async () => {
   try {
-    const result = await axios.get('http://localhost:3000/tasks');
+    const result = await axios.get(`${URL}tasks`);
     return result;
   } catch (error) {
     return error;
   }
 };
 
-export default { createTask, readAllTask };
+const deleteTask = async (id) => {
+  try {
+    const result = await axios.delete(`${URL}tasks/${id}`);
+    return result;
+  } catch (error) {
+    return error;
+  }
+};
+
+export default { createTask, readAllTask, deleteTask };
