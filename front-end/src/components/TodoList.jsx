@@ -9,6 +9,10 @@ export default function TodoList() {
     await Service.deleteTask(task);
   };
 
+  const updateStatus = async (id, task, status) => {
+    await Service.editTask(id, task, status);
+  };
+
   return (
     <ul>
       {list.data?.map((e) => (
@@ -20,6 +24,16 @@ export default function TodoList() {
           >
             X
           </button>
+          <select
+            name={e.id}
+            placeholder={e.id}
+            // value={e.status}
+            onChange={(event) => updateStatus(e.id, e.task, event.currentTarget.value)}
+          >
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Pending">Pending</option>
+          </select>
         </li>
       ))}
     </ul>
