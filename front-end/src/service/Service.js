@@ -14,4 +14,13 @@ const createTask = async (task, status) => {
   }
 };
 
-export default { createTask };
+const readAllTask = async () => {
+  try {
+    const result = await axios.get('http://localhost:3000/tasks');
+    return result;
+  } catch (error) {
+    return error;
+  }
+};
+
+export default { createTask, readAllTask };
