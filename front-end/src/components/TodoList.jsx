@@ -30,7 +30,6 @@ export default function TodoList() {
   };
 
   const editFunction = async (id) => {
-    console.log(document.querySelector('#editArea'));
     const editValue = document.querySelector('#editArea').innerHTML;
     await Service.editTask(id, editValue, edit.status);
     setEdit({
