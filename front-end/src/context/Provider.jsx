@@ -24,7 +24,7 @@ export default function Provider({ children }) {
     setList,
     refresh,
     setRefresh,
-  }), [task, list, refresh]);
+  }), [task, list]);
 
   return (
     <Context.Provider value={stateGlobal}>
