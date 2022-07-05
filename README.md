@@ -7,7 +7,7 @@ Boas vindas a este repositório, aqui você encontrará informações sobre o pr
 
 # Sumário
 
-- [Boas vindas ao repositório Ebytr To Do!](#boas-vindas-ao-repositório-ebytr-to-do)
+- [Boas vindas ao repositório Ebytr ToDoList!](#boas-vindas-ao-repositório-ebytr-to-do)
 - [Sumário](#sumário)
 - [O que foi desenvolvido](#o-que-foi-desenvolvido)
 - [Frameworks e bibliotecas](#frameworks-e-bibliotecas)
