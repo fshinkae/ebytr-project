@@ -6,8 +6,11 @@ import '../style.css';
 
 export default function Home() {
   return (
-    <div>
-      <h1>EBTYR - Todo App</h1>
+    <div className="aplicationGroup">
+      <header>
+        <h1 className="display-1 text-white font-weight-bold">EBTYR</h1>
+        <p>Welcome to Todolist aplication</p>
+      </header>
       <TodoForm />
       <h2>Tasks List</h2>
       <TodoList />

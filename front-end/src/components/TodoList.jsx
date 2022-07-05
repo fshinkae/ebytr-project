@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Table } from 'react-bootstrap';
+import { Form, Table, Button } from 'react-bootstrap';
 import Context from '../context/Context';
 import Service from '../service/Service';
+
+import deleteIcon from '../images/deleteIcon.png';
+import editIcon from '../images/editIcon.png';
 
 import '../style.css';
 
@@ -46,20 +49,22 @@ export default function TodoList() {
   }, [refresh]);
 
   return (
-    <Table>
+    <Table striped bordered hover variant="dark">
       <thead>
         <th>#</th>
-        <th>Task</th>
+        <th className="taskA">Task</th>
         <th>Status</th>
-        <th>Tools</th>
+        <th>Actions</th>
       </thead>
       <tbody>
         {list.data?.map((e) => (
           <tr key={e.id}>
             <td>{e.id}</td>
-            <td>{e.task}</td>
+            <td className="taskA">{e.task}</td>
             <td>
-              <select
+              <Form.Select
+                class="selectpicker"
+                data-size="4"
                 name={e.id}
                 value={e.status}
                 onChange={(event) => updateStatus(e.id, e.task, event.currentTarget.value)}
@@ -67,22 +72,26 @@ export default function TodoList() {
                 <option value="In Progress">In Progress</option>
                 <option value="Completed">Completed</option>
                 <option value="Pending">Pending</option>
-              </select>
+              </Form.Select>
             </td>
             <td>
-              <div>
-                <button
+              <div className="actionsGroup">
+                <Button
+                  variant="danger"
+                  className="buttonGroup"
                   type="button"
                   onClick={() => deleteTask(e.id)}
                 >
-                  X
-                </button>
-                <button
+                  <img src={deleteIcon} alt="edit" />
+                </Button>
+                <Button
+                  variant="warning"
+                  className="buttonGroup"
                   type="button"
                   onClick={() => editorChange(e.id, e.status)}
                 >
-                  Edit
-                </button>
+                  <img src={editIcon} alt="edit" />
+                </Button>
               </div>
             </td>
           </tr>

@@ -26,16 +26,17 @@ export default function TodoForm() {
   };
 
   return (
-    <Container>
+    <Container className="formGroup">
       <InputGroup className="mb-3">
         <Form.Control
+          placeholder="What you to do?"
           as="textarea"
           type="text"
           onChange={handleChange}
           style={{ height: '100px' }}
         />
         <Button
-          variant="outline-secondary"
+          variant="secondary"
           type="button"
           onClick={onClick}
         >
