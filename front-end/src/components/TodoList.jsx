@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Table } from 'react-bootstrap';
 import Context from '../context/Context';
 import Service from '../service/Service';
+
+import '../style.css';
 
 export default function TodoList() {
   const { list, refresh, setRefresh } = useContext(Context);
@@ -43,43 +46,56 @@ export default function TodoList() {
   }, [refresh]);
 
   return (
-    <ul>
-      {list.data?.map((e) => (
-        <li key={e.id}>
-          {e.task}
-          <select
-            name={e.id}
-            // placeholder={e.id}
-            value={e.status}
-            onChange={(event) => updateStatus(e.id, e.task, event.currentTarget.value)}
-          >
-            <option value="In Progress">In Progress</option>
-            <option value="Completed">Completed</option>
-            <option value="Pending">Pending</option>
-          </select>
-          <button
-            type="button"
-            onClick={() => deleteTask(e.id)}
-          >
-            X
+    <Table>
+      <thead>
+        <th>#</th>
+        <th>Task</th>
+        <th>Status</th>
+        <th>Tools</th>
+      </thead>
+      <tbody>
+        {list.data?.map((e) => (
+          <tr key={e.id}>
+            <td>{e.id}</td>
+            <td>{e.task}</td>
+            <td>
+              <select
+                name={e.id}
+                value={e.status}
+                onChange={(event) => updateStatus(e.id, e.task, event.currentTarget.value)}
+              >
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+                <option value="Pending">Pending</option>
+              </select>
+            </td>
+            <td>
+              <div>
+                <button
+                  type="button"
+                  onClick={() => deleteTask(e.id)}
+                >
+                  X
+                </button>
+                <button
+                  type="button"
+                  onClick={() => editorChange(e.id, e.status)}
+                >
+                  Edit
+                </button>
+              </div>
+            </td>
+          </tr>
+        ))}
+        { edit.isEditing && (
+        <div>
+          <textarea id="editArea" value={newTask} onChange={(e) => setNewTask(e.target.value)} />
+          <button type="button" onClick={() => editFunction(edit.idEdit)}>
+            Confirm?
           </button>
-          <button
-            type="button"
-            onClick={() => editorChange(e.id, e.status)}
-          >
-            Edit
-          </button>
-        </li>
-      ))}
-      { edit.isEditing && (
-      <div>
-        <textarea id="editArea" value={newTask} onChange={(e) => setNewTask(e.target.value)} />
-        <button type="button" onClick={() => editFunction(edit.idEdit)}>
-          Confirm?
-        </button>
-      </div>
-
-      )}
-    </ul>
+        </div>
+        )}
+      </tbody>
+    </Table>
   );
 }

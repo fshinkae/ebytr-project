@@ -1,6 +1,12 @@
 import React, { useContext } from 'react';
+import {
+  Form,
+  Container, Button, InputGroup,
+} from 'react-bootstrap';
 import Context from '../context/Context';
 import Service from '../service/Service';
+
+import '../style.css';
 
 export default function TodoForm() {
   const {
@@ -20,17 +26,23 @@ export default function TodoForm() {
   };
 
   return (
-    <section>
-      <textarea
-        type="text"
-        onChange={handleChange}
-      />
-      <button
-        type="button"
-        onClick={onClick}
-      >
-        Add
-      </button>
-    </section>
+    <Container>
+      <InputGroup className="mb-3">
+        <Form.Control
+          as="textarea"
+          type="text"
+          onChange={handleChange}
+          style={{ height: '100px' }}
+        />
+        <Button
+          variant="outline-secondary"
+          type="button"
+          onClick={onClick}
+        >
+          Add
+        </Button>
+      </InputGroup>
+    </Container>
+
   );
 }
